@@ -1,0 +1,32 @@
+@startuml RobotCleaning
+left to right direction
+actor "Canteen staff" as Staff
+
+rectangle "The system" {
+        rectangle "Keyboard input" as Input <<Controller>>
+        rectangle "Staff/Communication" as StaffCom{
+            usecase "Request cleaning" as Requester 
+    }
+    rectangle "Cleaning system" <<Subsystem>> {
+        rectangle "Robot/Communication" as RobotCom{
+            usecase "Request receiver" as Receiver
+        }
+        rectangle "Main" <<Service>>{
+            usecase "Collect garbage" as Collect 
+            usecase "Dispose garbage" as Dispose 
+            usecase "Navigate" as Navigate 
+            usecase "Detect obstacles" as Detect 
+        }
+    }
+}
+
+Staff --> Input : Input Table
+Input -- StaffCom : Request Cleaning
+StaffCom -up- RobotCom : Notify Robot
+RobotCom -- Main : Request Cleaning
+
+Detect ..> Navigate : Detect Obstacles
+Navigate -up-> Collect : Start Cleaning
+Collect --> Dispose : Dispose Garbage
+
+@enduml
