@@ -1,0 +1,26 @@
+@startuml netflix
+
+' A main menu consiting of different topics with movies and series underneath. There is a bar in the top of the screen where the user can navigate to diffent locations within the application. While browsing the different pages the user finds a movie or series to watch, after which they select that movie/series. The movie/series is loaded and starts playing.
+
+' When entering the page the pictures for the movies/series don't load. When clicking the empty boxes a videoplayer pops up but the screen stays black. This results in a black screen with no way to exit thereby forcing the user to exit the page or search for the home site in the search bar.
+
+left to right direction
+actor "User" as User
+actor "Database" as Database
+
+rectangle "Netflix system" {
+	usecase "Request access" as RequestAccess
+	usecase "Display selection" as MainMenu
+	usecase "Change menu" as MenuChange  
+	usecase "Display media" as Media
+}
+
+User -- RequestAccess
+User -- MainMenu
+User -- Media
+User -- MenuChange
+Media -- Database : Load MP3
+MainMenu -- Database : Load media data
+
+
+@enduml
