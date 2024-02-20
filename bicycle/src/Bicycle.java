@@ -1,0 +1,65 @@
+public class Bicycle {
+	
+	private String rider;
+	private int speed = 0;
+	private int gear = 1;
+	Light frontLight = new Light();
+	Light backLight = new Light();
+	Wheel frontWheel = new Wheel();
+	Wheel backWheel = new Wheel();
+
+	public Bicycle(String rider){
+		this.rider = rider;
+	}
+
+	public void printBicycleOverview() {
+		System.out.println("Rider                : " + rider);
+		System.out.println("Speed                : " + speed);
+		System.out.println("Gear                 : " + gear);
+		System.out.println("Front light          : " + frontLight.getState());
+		System.out.println("Back light           : " + backLight.getState());
+		System.out.println("Front wheel damage   : " + frontWheel.getDamageState());
+		System.out.println("Back wheel damage    : " + backWheel.getDamageState());
+		System.out.println("Front wheel attached : " + frontWheel.getAttachedState());
+		System.out.println("Back wheel attached  : " + backWheel.getAttachedState());
+	}	
+
+	public String getRider(){
+		return rider;
+	}
+	
+	public int getspeed(){
+		return speed;
+	}
+	
+	public int getGear(){
+		return gear;
+	}
+	
+	public void changeLightState(boolean state){
+		frontLight.changeState(state);
+		frontLight.changeState(state);
+	}
+
+	public void step(int force){
+		if(getWheelsAttachment()) return;
+		speed += force > gear ? force-gear : 0;
+	}
+	
+	public void brake(int amount){
+		speed -= speed > 0 ? amount : 0;
+		speed = speed < 0 ? 0 : speed;
+	}
+
+	public void changeGears(int wantedGear){
+		gear = wantedGear;
+	}
+
+	public boolean getWheelsDamage(){
+		return frontWheel.getDamageState() || backWheel.getDamageState();
+	}
+	
+	private boolean getWheelsAttachment(){
+		return frontWheel.getAttachedState() && backWheel.getAttachedState();
+	}
+}
