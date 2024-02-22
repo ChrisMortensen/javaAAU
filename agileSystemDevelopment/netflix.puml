@@ -22,5 +22,16 @@ User -- MenuChange
 Media -- Database : Load MP3
 MainMenu -- Database : Load media data
 
+'Funktionelle krav: 
+'En bruger skal kunne logge ind på Netflix.
+'Hjemmesiden skal fremvise en menu ud fra data i en database
+'Hjemmesiden skal kunne fremvise en video ved brug af data fra database
+'Brugeren skal kunne ændre hvilken menu de begiver sig i
+'Systemet skal kunne retrieve data fra en database
+
+'Ikke funktionelle krav:
+'Skal have 100TB plads til media
+'Skal loade sider under 1 sekundt
+'Skal overholde reglerne for GDPR
 
 @enduml
