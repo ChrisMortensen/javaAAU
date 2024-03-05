@@ -1,15 +1,16 @@
 public class Bicycle {
 	
 	private String rider;
-	private int speed = 0;
+	private int speed;
 	private int gear = 1;
 	Light frontLight = new Light();
 	Light backLight = new Light();
 	Wheel frontWheel = new Wheel();
 	Wheel backWheel = new Wheel();
 
-	public Bicycle(String rider){
+	public Bicycle(String rider, int speed){
 		this.rider = rider;
+		this.speed = speed;
 	}
 
 	public void printBicycleOverview() {
@@ -28,7 +29,7 @@ public class Bicycle {
 		return rider;
 	}
 	
-	public int getspeed(){
+	public int getSpeed(){
 		return speed;
 	}
 	
