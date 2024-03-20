@@ -1,0 +1,40 @@
+@startuml Class Diagram
+left to right direction
+
+abstract class Vehicle{
+	+int speed
+}
+
+VehicleInterface <|.- Vehicle
+interface VehicleInterface{
+	+void move()
+	+void speedUp()
+	+void slowDown()
+	+void getSpeed()
+}
+
+Vehicle <|- Train
+abstract class Train{
+	+int fuelPercentage
+	+int getFuelPercentage()
+	+void speedUp()
+	+void slowDown()
+	+void fillFuel()
+}
+
+TrainInterface <|.- Train
+interface TrainInterface{
+	+void fillFuel()
+}
+
+Train <|- ElectricTrain
+class ElectricTrain{
+	+void fillFuel()
+}
+
+Train <|- DieselTrain
+class DieselTrain{
+	+void fillFuel()
+}
+
+@enduml
