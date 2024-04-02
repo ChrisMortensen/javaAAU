@@ -1,5 +1,16 @@
+import java.util.UUID;
+
 public abstract class Train extends Vehicle implements TrainInterface{
+	private UUID id;
 	int fuelPercentage = 0;
+
+	public Train() {
+        this.id = UUID.randomUUID();
+    }
+
+	public UUID getId() {
+		return id;
+	}
 
 	public int getFuelPercentage(){
 		return fuelPercentage;
