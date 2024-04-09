@@ -20,7 +20,7 @@ public class Operator extends Thread{
 		Action action = Action.values()[rand.nextInt(Action.values().length)];
 		switch (action) {
 			case SEEK:
-				trainListManager.seek();
+				System.out.println(trainListManager.seek());
 				break;
 			case INSERT:
 			TrainListManager.TrainType trainType = TrainListManager.TrainType.values()[rand.nextInt(TrainListManager.TrainType.values().length)];

@@ -10,17 +10,18 @@ public class TrainListManager {
 		ELECTRIC
 	}
 
-	public void seek() {
+	public String seek() {
 		if (trainList.isEmpty()) {
-			System.out.println("No Trains In List");
-			return;
+			return "No Trains In List";
 		}
-		System.out.println("Number\tSpeed\tFuel %\t");
+		StringBuilder result = new StringBuilder();
+		result.append("Number\tSpeed\tFuel %\t");
 		for (int i = 0; i < trainList.size(); i++) {
 			Train train = trainList.get(i);
-			System.out.println(i + 1 + "\t" + train.getSpeed() + "\t" + train.getFuelPercentage());
+			result.append("\n" + (i + 1) + "\t" + train.getSpeed() + "\t" + train.getFuelPercentage());
 		}
-	}
+		return result.toString();
+	}	
 
 	public void insert(TrainType trainType, int fuelPercentage) {
 		switch (trainType) {
