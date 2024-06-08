@@ -2,7 +2,7 @@ import java.util.UUID;
 
 public abstract class Train extends Vehicle implements TrainInterface{
 	private UUID id;
-	int fuelPercentage = 0;
+	protected int fuelPercentage = 0;
 
 	public Train() {
         this.id = UUID.randomUUID();

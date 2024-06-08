@@ -3,10 +3,10 @@ public class Bicycle {
 	private String rider;
 	private int speed;
 	private int gear = 1;
-	Light frontLight = new Light();
-	Light backLight = new Light();
-	Wheel frontWheel = new Wheel();
-	Wheel backWheel = new Wheel();
+	private Light frontLight = new Light("FrontLight");
+	private Light backLight = new Light("BackLight");
+	private Wheel frontWheel = new Wheel("FrontWheel");
+	private Wheel backWheel = new Wheel("BackWheel");
 
 	public Bicycle(String rider, int speed){
 		this.rider = rider;
@@ -39,7 +39,7 @@ public class Bicycle {
 	
 	public void changeLightState(boolean state){
 		frontLight.changeState(state);
-		frontLight.changeState(state);
+		backLight.changeState(state);
 	}
 
 	public void step(int force){

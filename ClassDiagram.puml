@@ -2,28 +2,28 @@
 left to right direction
 
 abstract class Vehicle{
-	+int speed
+	-int speed
+	+void move()
 }
 
-VehicleInterface <|.- Vehicle
-interface VehicleInterface{
-	+void move()
+SpeedInterface <|.- Vehicle
+interface SpeedInterface{
+	+int getSpeed()
 	+void speedUp()
 	+void slowDown()
-	+void getSpeed()
 }
 
 Vehicle <|- Train
 abstract class Train{
-	+int fuelPercentage
-	+int getFuelPercentage()
+	-int fuelPercentage
 	+void speedUp()
 	+void slowDown()
 	+void fillFuel()
 }
 
-TrainInterface <|.- Train
-interface TrainInterface{
+FuelInterface <|.- Train
+interface FuelInterface{
+	+int getFuelPercentage()
 	+void fillFuel()
 }
 
