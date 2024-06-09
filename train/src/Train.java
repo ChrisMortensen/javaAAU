@@ -8,6 +8,10 @@ public abstract class Train extends Vehicle implements TrainInterface{
         this.id = UUID.randomUUID();
     }
 
+	public Train(int fuelPercentage){
+		this.fuelPercentage = fuelPercentage;
+	}
+
 	public UUID getId() {
 		return id;
 	}

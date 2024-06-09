@@ -1,6 +1,5 @@
 public interface VehicleInterface {
-    void move();
+    int getSpeed();
     void speedUp();
     void slowDown();
-    int getSpeed();
 }
