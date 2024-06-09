@@ -34,6 +34,11 @@ public class Bicycle extends Object{
 		return speed;
 	}
 
+	// Only here because of assignement 5
+	public void setSpeed(int speed){
+		this.speed = speed;
+	}
+
 	public int getGear() {
 		return gear;
 	}

@@ -14,26 +14,32 @@ public class Race {
             bikes[i] = new Bicycle("#" + i, rand.nextInt(80));
         }
 
-        // Place the 100 bicycles in a LinkedList
+        // Add them one-by-one to a stack.
         for (Bicycle bike : bikes) {
-            bicycleList.add(bike);
+            bicycleStack.push(bike);
         }
 
         // Decrease the speed for each bicycle by 25% as you take them off the stack.
         while (!bicycleStack.isEmpty()) {
             Bicycle bike = bicycleStack.pop();
             bike.brake((int) (bike.getSpeed() * 0.75));
-            // Place the 100 bicycles in a Stack
-            bicycleStack.push(bike);
+        }
+
+        // Add them one-by-one to a priorityqueue.
+        for (Bicycle bike : bikes) {
+            bicyclePriorityQueue.add(bike);
         }
 
         // Increase speed for each bicycle by 25% in the same order as you inserted the
         // bicycles.
         while (!bicyclePriorityQueue.isEmpty()) {
             Bicycle bike = bicyclePriorityQueue.poll();
-            bike.brake((int) (bike.getSpeed() * 1.25));
-            // Place the 100 bicycles in a PriorityQueue
-            bicyclePriorityQueue.offer(bike);
+            bike.setSpeed((int) (bike.getSpeed() * 1.25));
+        }
+
+        // Structure the bicycles in a LinkedList
+        for (Bicycle bike : bikes) {
+            bicycleList.add(bike);
         }
 
         // Remove all bicycles that drives less than 10 km/h from the LinkedList.
@@ -44,8 +50,9 @@ public class Race {
                 iterator.remove();
             }
         }
+
+        // Use a hashmap to organize the remaining bicycles
         for (Bicycle bike : bicycleList) {
-            // Use a hashmap to organize the remaining bicycles
             bicycleMap.put(bike.getRider(), bike);
         }
 
