@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,4 +52,34 @@ public class TrainListManager {
 		}
 		return trainListUUIDs;
 	}
+
+	public void sortTrains(String parameter){
+		switch (parameter) {
+			case "Length":
+				Collections.sort(trainList, lengthComparator);
+				break;
+
+			case "Weight":
+				Collections.sort(trainList, weightComparator);
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	public static Comparator<Train> lengthComparator = new Comparator<Train>() {
+        @Override
+        public int compare(Train t1, Train t2) {
+            return Integer.compare(t1.getLength(), t2.getLength());
+        }
+    };
+
+	public static Comparator<Train> weightComparator = new Comparator<Train>() {
+		@Override
+		public int compare(Train t1, Train t2) {
+			return Integer.compare(t1.getWeight(), t2.getWeight());
+		}
+	};
+
 }
