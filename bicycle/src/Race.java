@@ -59,7 +59,7 @@ public class Race {
             if (!userInput.equalsIgnoreCase("exit")) {
                 Bicycle foundBicycle = bicycleMap.get(userInput);
                 if (foundBicycle != null) {
-                    foundBicycle.printBicycleOverview();
+                    foundBicycle.printOverview();
                 } else {
                     System.out.println("Bicycle not found.");
                 }

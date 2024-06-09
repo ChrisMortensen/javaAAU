@@ -1,4 +1,4 @@
-public class Bicycle {
+public class Bicycle extends Object{
 
 	private String rider;
 	private int speed;
@@ -13,7 +13,7 @@ public class Bicycle {
 		this.speed = speed;
 	}
 
-	public void printBicycleOverview() {
+	public void printOverview() {
 		System.out.println("\n--- Bicycle Overview ---");
 		System.out.println("Rider                : " + rider);
 		System.out.println("Speed                : " + speed);
@@ -74,7 +74,7 @@ public class Bicycle {
 		return frontWheel.getDamageState() || backWheel.getDamageState();
 	}
 
-	private boolean getWheelsAttachment() {
+	public boolean getWheelsAttachment() {
 		return frontWheel.getAttachedState() && backWheel.getAttachedState();
 	}
 }

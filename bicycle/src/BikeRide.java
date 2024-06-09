@@ -4,10 +4,38 @@ public class BikeRide {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Bicycle bicycle = new Bicycle("John Doe", 0);
+        Bicycle bicycle = null;
+
+        while (bicycle == null) {
+            System.out.println("\n--- Select Bicycle Type ---");
+            System.out.println("1. Regular Bicycle");
+            System.out.println("2. Electric Bicycle");
+            System.out.println("3. Mountain Bike");
+            System.out.println("4. Tandem Bicycle");
+            System.out.print("Select a bicycle type: ");
+            int bikeChoice = scanner.nextInt();
+
+            switch (bikeChoice) {
+                case 1:
+                    bicycle = new Bicycle("John Doe", 0);
+                    break;
+                case 2:
+                    bicycle = new ElectricBicycle("Jane Doe", 0);
+                    break;
+                case 3:
+                    bicycle = new MountainBike("Alice", 0);
+                    break;
+                case 4:
+                    bicycle = new TandemBicycle("Bob and Charlie", 0);
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
 
         while (true) {
-            System.out.println("\nRider: " + bicycle.getRider() + " | Gear: " + bicycle.getGear() + " | " + bicycle.getSpeed() + "km\\h");
+            System.out.println("\nRider: " + bicycle.getRider() + " | Gear: " + bicycle.getGear() + " | "
+                    + bicycle.getSpeed() + "km\\h");
             System.out.println("--- Bicycle Control Menu ---");
             System.out.println("1. Ride forward");
             System.out.println("2. Change gears");
@@ -16,7 +44,8 @@ public class BikeRide {
             System.out.println("5. Fix wheel");
             System.out.println("6. Brake");
             System.out.println("7. Show bicycle overview");
-            System.out.println("8. Exit");
+            System.out.println("8. Toggle bike-specific feature");
+            System.out.println("9. Exit");
             System.out.print("Select an option: ");
 
             int choice = scanner.nextInt();
@@ -71,9 +100,28 @@ public class BikeRide {
                     bicycle.brake(brakeAmount);
                     break;
                 case 7:
-                    bicycle.printBicycleOverview();
+                    bicycle.printOverview();
                     break;
                 case 8:
+                    if (bicycle instanceof ElectricBicycle) {
+                        ((ElectricBicycle) bicycle).toggleMotor();
+                    } else if (bicycle instanceof MountainBike) {
+                        ((MountainBike) bicycle).toggleSuspension();
+                    } else if (bicycle instanceof TandemBicycle) {
+                        System.out.print("Occupy or leave second seat? (1 for occupy, 2 for leave): ");
+                        int seatChoice = scanner.nextInt();
+                        if (seatChoice == 1) {
+                            ((TandemBicycle) bicycle).occupySecondSeat();
+                        } else if (seatChoice == 2) {
+                            ((TandemBicycle) bicycle).leaveSecondSeat();
+                        } else {
+                            System.out.println("Invalid choice.");
+                        }
+                    } else {
+                        System.out.println("This bicycle has no specific features to toggle.");
+                    }
+                    break;
+                case 9:
                     System.out.println("Exiting...");
                     scanner.close();
                     return;

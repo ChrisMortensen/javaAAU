@@ -1,0 +1,48 @@
+@startuml Bicycle ClassDiagram
+class Bicycle {
+    -String rider
+    -int speed
+    -int gear
+    +Light frontLight 
+    +Light backLight 
+    +Wheel frontWheel 
+    +Wheel backWheel 
+
+    +Bicycle(String rider, int speed)
+    +void printBicycleOverview()
+    +String getRider()
+    +int getSpeed()
+    +int getGear()
+    +void changeLightState(boolean state)
+    +void step(int force)
+    +void brake(int amount)
+    +void changeGears(int wantedGear)
+    +boolean getWheelsDamage()
+    +boolean getWheelsAttachment()
+}
+
+class Light {
+    -String name
+    -boolean state
+
+    +Light(String name)
+    +boolean getState()
+    +void changeState(boolean state)
+}
+
+class Wheel {
+    -String name
+    -boolean attached = true
+    -boolean damaged = false
+
+    +Wheel(String name)
+    +boolean getDamageState()
+    +boolean getAttachedState()
+    +void removeWheel(int speed)
+    +void fixWheel(int speed)
+}
+
+Bicycle o-- "2" Light
+Bicycle o-- "2" Wheel
+
+@enduml
