@@ -43,6 +43,8 @@ public class Race {
             if (bike.getSpeed() < 10) {
                 iterator.remove();
             }
+        }
+        for (Bicycle bike : bicycleList) {
             // Use a hashmap to organize the remaining bicycles
             bicycleMap.put(bike.getRider(), bike);
         }
@@ -63,7 +65,6 @@ public class Race {
                 }
             }
         } while (!userInput.equalsIgnoreCase("exit"));
-
         scanner.close();
     }
 }
