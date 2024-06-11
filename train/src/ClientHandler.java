@@ -49,6 +49,10 @@ class ClientHandler extends Thread {
 			out.close();
 			clientSocket.close();
 		} catch (IOException e) {
+			System.err.println("Error with some I/O: " + e.getMessage());
+			e.printStackTrace();
+		} catch (InvalidTrainTypeException e) {
+			System.err.println(e.getMessage());
 			e.printStackTrace();
 		}
 	}

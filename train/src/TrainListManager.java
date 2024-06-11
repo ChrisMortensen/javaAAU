@@ -25,7 +25,7 @@ public class TrainListManager {
 		return result.toString();
 	}	
 
-	public void insert(TrainType trainType, int fuelPercentage) {
+	public void insert(TrainType trainType, int fuelPercentage) throws InvalidTrainTypeException {
 		switch (trainType) {
 			case DIESEL:
 				trainList.add(new DieselTrain(fuelPercentage));
@@ -34,7 +34,7 @@ public class TrainListManager {
 				trainList.add(new ElectricTrain(fuelPercentage));
 				break;
 			default:
-				break;
+				throw new InvalidTrainTypeException("Invalid train type: " + trainType);		
 		}
 	}
 

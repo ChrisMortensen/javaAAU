@@ -10,8 +10,13 @@ public class ProgramManager {
 		} else {
 			for (int i = 0; i < 30; i++) {
 				Operator op = new Operator(trainListManager);
-				op.start();
-				op.join();
+				try {
+					op.start();
+					op.join();
+				} catch (IllegalThreadStateException e) {
+					System.err.println("Thread is already running: " + e.getMessage());
+					e.printStackTrace();
+				}
 			}
 		}		
 	}

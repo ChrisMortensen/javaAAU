@@ -24,7 +24,12 @@ public class Operator extends Thread{
 				break;
 			case INSERT:
 			TrainListManager.TrainType trainType = TrainListManager.TrainType.values()[rand.nextInt(TrainListManager.TrainType.values().length)];
-				trainListManager.insert(trainType, rand.nextInt(101));
+				try {
+					trainListManager.insert(trainType, rand.nextInt(101));
+				} catch (InvalidTrainTypeException e) {
+					System.err.println(e.getMessage());
+					e.printStackTrace();
+				}
 				break;
 			case DELETE:
 				List<UUID> trainListUUIDs = trainListManager.getTrainListUUIDs();

@@ -36,7 +36,14 @@ public class Client extends Thread {
 			in.close();
 			out.close();
 			socket.close();
+		} catch (UnknownHostException e) {
+			System.err.println("Host could not be found. (Check if host-ip is correct): " + e.getMessage());
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			System.err.println("Host port out of port-range (0-65535): " + e.getMessage());
+			e.printStackTrace();
 		} catch (IOException e) {
+			System.err.println("Error with some I/O: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
