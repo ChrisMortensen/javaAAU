@@ -22,7 +22,7 @@ public class Race {
         // Decrease the speed for each bicycle by 25% as you take them off the stack.
         while (!bicycleStack.isEmpty()) {
             Bicycle bike = bicycleStack.pop();
-            bike.brake((int) (bike.getSpeed() * 0.75));
+            bike.setSpeed((int) (bike.getSpeed() * 0.75));
         }
 
         // Add them one-by-one to a priorityqueue.
